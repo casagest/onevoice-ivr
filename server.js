@@ -137,7 +137,7 @@ app.post("/menu-select", (req, res) => {
   } else {
     // Invalid digit, replay menu
     twiml.say(
-      { voice: "Google.ro-RO-Wavenet-A", language: "ro-RO" },
+      { voice: "Polly.Carmen-Neural", language: "ro-RO" },
       "Nu am înțeles. Hai să încercăm din nou."
     );
     twiml.redirect("/voice");
@@ -159,13 +159,13 @@ app.post("/menu-select", (req, res) => {
   });
 
   gather.say(
-    { voice: "Google.ro-RO-Wavenet-A", language: "ro-RO" },
+    { voice: "Polly.Carmen-Neural", language: "ro-RO" },
     greeting
   );
 
   // If no speech, prompt again
   twiml.say(
-    { voice: "Google.ro-RO-Wavenet-A", language: "ro-RO" },
+    { voice: "Polly.Carmen-Neural", language: "ro-RO" },
     "Nu am auzit nimic. Poți să repeți?"
   );
   twiml.redirect(`/voice-input?mode=${mode}`);
@@ -192,13 +192,13 @@ app.post("/voice-input", (req, res) => {
   });
 
   gather.say(
-    { voice: "Google.ro-RO-Wavenet-A", language: "ro-RO" },
+    { voice: "Polly.Carmen-Neural", language: "ro-RO" },
     "Te ascult."
   );
 
   // If still no speech after timeout
   twiml.say(
-    { voice: "Google.ro-RO-Wavenet-A", language: "ro-RO" },
+    { voice: "Polly.Carmen-Neural", language: "ro-RO" },
     "Se pare că avem probleme cu conexiunea. Încearcă să suni din nou. La revedere!"
   );
   twiml.hangup();
@@ -225,7 +225,7 @@ app.post("/process-speech", async (req, res) => {
   // No speech detected
   if (!speechResult) {
     twiml.say(
-      { voice: "Google.ro-RO-Wavenet-A", language: "ro-RO" },
+      { voice: "Polly.Carmen-Neural", language: "ro-RO" },
       "Nu am înțeles. Poți să repeți te rog?"
     );
     twiml.redirect(`/voice-input?mode=${mode}`);
@@ -237,7 +237,7 @@ app.post("/process-speech", async (req, res) => {
   const bye = /\b(pa|la revedere|gata|mulțumesc|bye|stop)\b/i;
   if (bye.test(speechResult)) {
     twiml.say(
-      { voice: "Google.ro-RO-Wavenet-A", language: "ro-RO" },
+      { voice: "Polly.Carmen-Neural", language: "ro-RO" },
       "Mulțumesc că ai sunat! Sănătate și o zi frumoasă! La revedere!"
     );
     twiml.hangup();
@@ -281,11 +281,11 @@ app.post("/process-speech", async (req, res) => {
       timeout: 10,
     });
 
-    gather.say({ voice: "Google.ro-RO-Wavenet-A", language: "ro-RO" }, reply);
+    gather.say({ voice: "Polly.Carmen-Neural", language: "ro-RO" }, reply);
 
     // If no more speech, polite goodbye
     twiml.say(
-      { voice: "Google.ro-RO-Wavenet-A", language: "ro-RO" },
+      { voice: "Polly.Carmen-Neural", language: "ro-RO" },
       "Dacă mai ai întrebări, sună oricând. La revedere!"
     );
     twiml.hangup();
@@ -293,7 +293,7 @@ app.post("/process-speech", async (req, res) => {
     console.error(`❌ [${callSid}] OpenAI error:`, err.message);
 
     twiml.say(
-      { voice: "Google.ro-RO-Wavenet-A", language: "ro-RO" },
+      { voice: "Polly.Carmen-Neural", language: "ro-RO" },
       "Îmi pare rău, am o problemă tehnică momentan. Te rog sună din nou în câteva minute."
     );
     twiml.hangup();
